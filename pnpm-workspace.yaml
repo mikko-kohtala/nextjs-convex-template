@@ -1,0 +1,15 @@
+packages:
+  - apps/*
+  - packages/*
+
+ignoredBuiltDependencies:
+  - "@swc/core"
+
+onlyBuiltDependencies:
+  - "@tailwindcss/oxide"
+  - "@vercel/speed-insights"
+  - core-js
+  - esbuild
+  - oxc-resolver
+  - sharp
+  - unrs-resolver

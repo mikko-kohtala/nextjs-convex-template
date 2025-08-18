@@ -1,0 +1,12 @@
+node_modules
+.next
+dist
+build
+.turbo
+packages/database/convex/_generated
+**/convex/_generated
+**/_generated
+*.min.js
+*.config.js
+*.config.ts
+*.config.mjs
