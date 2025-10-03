@@ -4,13 +4,21 @@ if (typeof MessageChannel === "undefined") {
     onmessage: ((ev: MessageEvent) => void) | undefined;
     onmessageerror: ((ev: MessageEvent) => void) | undefined;
 
-    close() {}
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    postMessage(_message: unknown, _transfer: any[] = []) {}
-    start() {}
-    addEventListener() {}
-    removeEventListener() {}
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    close() {
+      // Mock implementation - no-op
+    }
+    postMessage(_message: unknown, _transfer: unknown[] = []) {
+      // Mock implementation - no-op
+    }
+    start() {
+      // Mock implementation - no-op
+    }
+    addEventListener() {
+      // Mock implementation - no-op
+    }
+    removeEventListener() {
+      // Mock implementation - no-op
+    }
     dispatchEvent(_event: Event): boolean {
       return false;
     }
@@ -26,6 +34,5 @@ if (typeof MessageChannel === "undefined") {
     }
   }
 
-  globalThis.MessageChannel =
-    MockMessageChannel as unknown as typeof MessageChannel;
+  globalThis.MessageChannel = MockMessageChannel as unknown as typeof MessageChannel;
 }

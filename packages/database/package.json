@@ -7,7 +7,10 @@
     "dev": "convex dev",
     "build": "echo 'Convex generation happens in dev mode'",
     "convex:deploy": "convex deploy --cmd 'pnpm tsx ./src/create-auth.ts'",
+    "lint": "biome lint .",
+    "format": "biome format --write .",
     "typecheck": "tsc --noEmit",
+    "check": "biome check --write .",
     "clean": "git clean -xdf .turbo dist build node_modules convex/_generated"
   },
   "dependencies": {

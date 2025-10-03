@@ -6,15 +6,17 @@
     "dev": "pnpm install && turbo dev",
     "dev:web": "turbo build --filter=@acme/database && turbo dev --filter=@acme/nextjs",
     "build": "turbo build",
-    "lint": "turbo lint",
+    "lint": "biome lint .",
+    "format": "biome format --write .",
     "typecheck": "turbo typecheck",
-    "check": "turbo typecheck",
+    "check": "turbo check",
     "clean": "turbo clean && rm -rf node_modules .turbo"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.5",
     "turbo": "2.5.8",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "ultracite": "^5.5.0"
   },
   "packageManager": "pnpm@10.18.0",
   "engines": {

@@ -1,9 +1,11 @@
 "use client";
 
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+
+const MIN_PASSWORD_LENGTH = 8;
 
 export default function SignUpPage() {
   const [name, setName] = useState("");
@@ -23,8 +25,8 @@ export default function SignUpPage() {
       return;
     }
 
-    if (password.length < 8) {
-      setError("Password must be at least 8 characters long");
+    if (password.length < MIN_PASSWORD_LENGTH) {
+      setError(`Password must be at least ${MIN_PASSWORD_LENGTH} characters long`);
       return;
     }
 
@@ -46,15 +48,13 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full space-y-8">
+    <div className="flex min-h-screen items-center justify-center bg-gray-50">
+      <div className="w-full max-w-md space-y-8">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Create your account
-          </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
+          <h2 className="mt-6 text-center font-extrabold text-3xl text-gray-900">Create your account</h2>
+          <p className="mt-2 text-center text-gray-600 text-sm">
             Or{" "}
-            <Link href="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
+            <Link className="font-medium text-indigo-600 hover:text-indigo-500" href="/login">
               sign in to existing account
             </Link>
           </p>
@@ -62,82 +62,82 @@ export default function SignUpPage() {
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+              <label className="block font-medium text-gray-700 text-sm" htmlFor="name">
                 Full Name
               </label>
               <input
+                autoComplete="name"
+                className="relative mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 id="name"
                 name="name"
-                type="text"
-                autoComplete="name"
-                required
-                value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Enter your full name"
+                required
+                type="text"
+                value={name}
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label className="block font-medium text-gray-700 text-sm" htmlFor="email">
                 Email address
               </label>
               <input
+                autoComplete="email"
+                className="relative mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 id="email"
                 name="email"
-                type="email"
-                autoComplete="email"
-                required
-                value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Enter your email"
+                required
+                type="email"
+                value={email}
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label className="block font-medium text-gray-700 text-sm" htmlFor="password">
                 Password
               </label>
               <input
+                autoComplete="new-password"
+                className="relative mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 id="password"
                 name="password"
-                type="password"
-                autoComplete="new-password"
-                required
-                value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Create a password (min 8 characters)"
+                required
+                type="password"
+                value={password}
               />
             </div>
             <div>
-              <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-700">
+              <label className="block font-medium text-gray-700 text-sm" htmlFor="confirm-password">
                 Confirm Password
               </label>
               <input
+                autoComplete="new-password"
+                className="relative mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 id="confirm-password"
                 name="confirm-password"
-                type="password"
-                autoComplete="new-password"
-                required
-                value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Confirm your password"
+                required
+                type="password"
+                value={confirmPassword}
               />
             </div>
           </div>
 
           {error && (
             <div className="rounded-md bg-red-50 p-4">
-              <div className="text-sm text-red-800">{error}</div>
+              <div className="text-red-800 text-sm">{error}</div>
             </div>
           )}
 
           <div>
             <button
-              type="submit"
+              className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 font-medium text-sm text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
               disabled={loading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              type="submit"
             >
               {loading ? "Creating account..." : "Sign up"}
             </button>

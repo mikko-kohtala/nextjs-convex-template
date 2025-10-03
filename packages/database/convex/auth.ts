@@ -1,14 +1,9 @@
-import {
-  createClient,
-  type AuthFunctions,
-  type GenericCtx,
-  getStaticAuth,
-} from "@convex-dev/better-auth";
-import { betterAuth } from "better-auth";
+import { type AuthFunctions, createClient, type GenericCtx, getStaticAuth } from "@convex-dev/better-auth";
 import { convex } from "@convex-dev/better-auth/plugins";
+import { betterAuth } from "better-auth";
 import { components, internal } from "./_generated/api";
 import type { DataModel, Id } from "./_generated/dataModel";
-import { query, type QueryCtx } from "./_generated/server";
+import { type QueryCtx, query } from "./_generated/server";
 
 const authFunctions: AuthFunctions = internal.auth;
 
@@ -73,7 +68,7 @@ export const auth: ReturnType<typeof betterAuth> = getStaticAuth(createAuth);
 // Helper functions for getting the current user
 export const safeGetUser = async (ctx: QueryCtx) => {
   const authUser = await authComponent.safeGetAuthUser(ctx);
-  if (!authUser || !authUser.userId) {
+  if (!authUser?.userId) {
     return null;
   }
   // Get user data from your application's database
@@ -93,7 +88,5 @@ export const getUser = async (ctx: QueryCtx) => {
 
 export const getCurrentUser = query({
   args: {},
-  handler: async (ctx) => {
-    return safeGetUser(ctx);
-  },
+  handler: async (ctx) => safeGetUser(ctx),
 });
