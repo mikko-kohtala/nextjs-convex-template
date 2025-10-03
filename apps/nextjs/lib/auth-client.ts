@@ -1,9 +1,15 @@
-import { createAuthClient } from "better-auth/react"
-import type { Session, User } from "better-auth/types"
+import { createAuthClient } from "better-auth/react";
+import { convexClient } from "@convex-dev/better-auth/client/plugins";
+import { inferAdditionalFields } from "better-auth/client/plugins";
+import type { Session, User } from "better-auth/types";
+import type { auth } from "@acme/database/convex/auth";
 
 export const authClient = createAuthClient({
-  baseURL: process.env.NEXT_PUBLIC_CONVEX_URL || "https://polished-basilisk-553.convex.cloud",
-})
+  plugins: [
+    inferAdditionalFields<typeof auth>(),
+    convexClient(),
+  ],
+});
 
-export type AuthSession = Session
-export type AuthUser = User
+export type AuthSession = Session;
+export type AuthUser = User;
