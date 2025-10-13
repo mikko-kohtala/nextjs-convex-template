@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
 
 export default function LoginPage() {
@@ -31,70 +32,77 @@ export default function LoginPage() {
     }
   };
 
+  const inputStyles = useMemo(
+    () =>
+      "mt-1 w-full rounded-xl border border-input bg-background px-3 py-2 text-sm shadow-sm outline-none transition focus-visible:border-transparent focus-visible:ring-2 focus-visible:ring-primary/20",
+    [],
+  );
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50">
-      <div className="w-full max-w-md space-y-8">
-        <div>
-          <h2 className="mt-6 text-center font-extrabold text-3xl text-gray-900">Sign in to your account</h2>
-          <p className="mt-2 text-center text-gray-600 text-sm">
-            Or{" "}
-            <Link className="font-medium text-indigo-600 hover:text-indigo-500" href="/signup">
-              create a new account
-            </Link>
+    <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-12 dark:bg-background">
+      <div className="w-full max-w-sm">
+        <div className="space-y-2 text-center">
+          <h1 className="font-semibold text-3xl tracking-tight">Welcome back</h1>
+          <p className="text-muted-foreground text-sm">
+            Sign in to continue building with the Acme starter kit.
           </p>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="-space-y-px rounded-md shadow-sm">
-            <div>
-              <label className="sr-only" htmlFor="email">
-                Email address
-              </label>
-              <input
-                autoComplete="email"
-                className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                id="email"
-                name="email"
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email address"
-                required
-                type="email"
-                value={email}
-              />
-            </div>
-            <div>
-              <label className="sr-only" htmlFor="password">
-                Password
-              </label>
-              <input
-                autoComplete="current-password"
-                className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                id="password"
-                name="password"
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
-                required
-                type="password"
-                value={password}
-              />
-            </div>
-          </div>
 
-          {error && (
-            <div className="rounded-md bg-red-50 p-4">
-              <div className="text-red-800 text-sm">{error}</div>
+        <div className="mt-8 rounded-2xl border bg-card p-6 shadow-sm">
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            <div className="space-y-4">
+              <div>
+                <label className="font-medium text-foreground text-sm" htmlFor="email">
+                  Email
+                </label>
+                <input
+                  autoComplete="email"
+                  className={inputStyles}
+                  id="email"
+                  name="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@example.com"
+                  required
+                  type="email"
+                  value={email}
+                />
+              </div>
+              <div>
+                <label className="font-medium text-foreground text-sm" htmlFor="password">
+                  Password
+                </label>
+                <input
+                  autoComplete="current-password"
+                  className={inputStyles}
+                  id="password"
+                  name="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter your password"
+                  required
+                  type="password"
+                  value={password}
+                />
+              </div>
             </div>
-          )}
 
-          <div>
-            <button
-              className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 font-medium text-sm text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-              disabled={loading}
-              type="submit"
-            >
-              {loading ? "Signing in..." : "Sign in"}
-            </button>
-          </div>
-        </form>
+            {error && (
+              <div className="rounded-xl border border-red-100 bg-red-50 px-3 py-2 text-red-600 text-sm">
+                {error}
+              </div>
+            )}
+
+            <Button className="w-full" disabled={loading} type="submit">
+              {loading ? "Signing in…" : "Sign in"}
+            </Button>
+          </form>
+
+          <p className="mt-6 text-center text-muted-foreground text-sm">
+            New here?{" "}
+            <Button asChild className="px-0 text-sm" variant="link">
+              <Link href="/signup">Create an account</Link>
+            </Button>
+          </p>
+        </div>
       </div>
     </div>
   );
