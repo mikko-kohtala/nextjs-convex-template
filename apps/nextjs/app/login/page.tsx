@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+
+import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
 
 export default function LoginPage() {
@@ -32,69 +34,66 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50">
-      <div className="w-full max-w-md space-y-8">
-        <div>
-          <h2 className="mt-6 text-center font-extrabold text-3xl text-gray-900">Sign in to your account</h2>
-          <p className="mt-2 text-center text-gray-600 text-sm">
-            Or{" "}
-            <Link className="font-medium text-indigo-600 hover:text-indigo-500" href="/signup">
-              create a new account
+    <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-16">
+      <div className="w-full max-w-md space-y-8 rounded-3xl border bg-white p-8 shadow-sm">
+        <div className="space-y-2 text-center">
+          <span className="inline-flex items-center justify-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
+            Welcome back
+          </span>
+          <h1 className="font-semibold text-2xl text-slate-900">Sign in to your account</h1>
+          <p className="text-sm text-muted-foreground">
+            New here?{" "}
+            <Link className="font-medium text-slate-900 underline-offset-4 hover:underline" href="/signup">
+              Create an account
             </Link>
           </p>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="-space-y-px rounded-md shadow-sm">
-            <div>
-              <label className="sr-only" htmlFor="email">
-                Email address
-              </label>
+
+        <form className="space-y-6" onSubmit={handleSubmit}>
+          <div className="space-y-4">
+            <label className="space-y-2 text-sm font-medium text-slate-700" htmlFor="email">
+              <span>Email</span>
               <input
                 autoComplete="email"
-                className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-base text-slate-900 shadow-sm transition focus:border-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-200"
                 id="email"
                 name="email"
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email address"
+                placeholder="you@example.com"
                 required
                 type="email"
                 value={email}
               />
-            </div>
-            <div>
-              <label className="sr-only" htmlFor="password">
-                Password
-              </label>
+            </label>
+
+            <label className="space-y-2 text-sm font-medium text-slate-700" htmlFor="password">
+              <span>Password</span>
               <input
                 autoComplete="current-password"
-                className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-base text-slate-900 shadow-sm transition focus:border-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-200"
                 id="password"
                 name="password"
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
+                placeholder="••••••••"
                 required
                 type="password"
                 value={password}
               />
-            </div>
+            </label>
           </div>
 
           {error && (
-            <div className="rounded-md bg-red-50 p-4">
-              <div className="text-red-800 text-sm">{error}</div>
-            </div>
+            <div className="rounded-2xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div>
           )}
 
-          <div>
-            <button
-              className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 font-medium text-sm text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-              disabled={loading}
-              type="submit"
-            >
-              {loading ? "Signing in..." : "Sign in"}
-            </button>
-          </div>
+          <Button className="w-full" disabled={loading} size="lg" type="submit">
+            {loading ? "Signing in…" : "Sign in"}
+          </Button>
         </form>
+
+        <p className="text-center text-xs text-muted-foreground">
+          By signing in you agree to our terms of use and privacy policy.
+        </p>
       </div>
     </div>
   );
