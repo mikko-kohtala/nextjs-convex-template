@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, type InputHTMLAttributes } from "react";
+import { type InputHTMLAttributes, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
@@ -53,11 +53,11 @@ export default function SignUpPage() {
     <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-16">
       <div className="w-full max-w-lg space-y-8 rounded-3xl border bg-white p-10 shadow-sm">
         <div className="space-y-2 text-center">
-          <span className="inline-flex items-center justify-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
+          <span className="inline-flex items-center justify-center rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-600 text-xs">
             Get started in minutes
           </span>
           <h1 className="font-semibold text-2xl text-slate-900">Create your account</h1>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             Already have access?{" "}
             <Link className="font-medium text-slate-900 underline-offset-4 hover:underline" href="/login">
               Sign in instead
@@ -114,7 +114,7 @@ export default function SignUpPage() {
           </div>
 
           {error && (
-            <div className="rounded-2xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div>
+            <div className="rounded-2xl border border-red-100 bg-red-50 px-4 py-3 text-red-700 text-sm">{error}</div>
           )}
 
           <Button className="w-full" disabled={loading} size="lg" type="submit">
@@ -122,7 +122,7 @@ export default function SignUpPage() {
           </Button>
         </form>
 
-        <p className="text-center text-xs text-muted-foreground">
+        <p className="text-center text-muted-foreground text-xs">
           We&apos;ll never share your email. You can update account details anytime.
         </p>
       </div>
@@ -138,14 +138,14 @@ type FieldProps = {
 
 function Field({ id, label, helperText, ...props }: FieldProps) {
   return (
-    <label className="space-y-2 text-sm font-medium text-slate-700" htmlFor={id}>
+    <label className="space-y-2 font-medium text-slate-700 text-sm" htmlFor={id}>
       <span>{label}</span>
       <input
         className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-base text-slate-900 shadow-sm transition focus:border-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-200"
         id={id}
         {...props}
       />
-      {helperText && <p className="text-xs font-normal text-muted-foreground">{helperText}</p>}
+      {helperText && <p className="font-normal text-muted-foreground text-xs">{helperText}</p>}
     </label>
   );
 }

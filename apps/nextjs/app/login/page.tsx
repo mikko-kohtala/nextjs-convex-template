@@ -37,11 +37,11 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-16">
       <div className="w-full max-w-md space-y-8 rounded-3xl border bg-white p-8 shadow-sm">
         <div className="space-y-2 text-center">
-          <span className="inline-flex items-center justify-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
+          <span className="inline-flex items-center justify-center rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-600 text-xs">
             Welcome back
           </span>
           <h1 className="font-semibold text-2xl text-slate-900">Sign in to your account</h1>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             New here?{" "}
             <Link className="font-medium text-slate-900 underline-offset-4 hover:underline" href="/signup">
               Create an account
@@ -51,7 +51,7 @@ export default function LoginPage() {
 
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
-            <label className="space-y-2 text-sm font-medium text-slate-700" htmlFor="email">
+            <label className="space-y-2 font-medium text-slate-700 text-sm" htmlFor="email">
               <span>Email</span>
               <input
                 autoComplete="email"
@@ -66,7 +66,7 @@ export default function LoginPage() {
               />
             </label>
 
-            <label className="space-y-2 text-sm font-medium text-slate-700" htmlFor="password">
+            <label className="space-y-2 font-medium text-slate-700 text-sm" htmlFor="password">
               <span>Password</span>
               <input
                 autoComplete="current-password"
@@ -83,7 +83,7 @@ export default function LoginPage() {
           </div>
 
           {error && (
-            <div className="rounded-2xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div>
+            <div className="rounded-2xl border border-red-100 bg-red-50 px-4 py-3 text-red-700 text-sm">{error}</div>
           )}
 
           <Button className="w-full" disabled={loading} size="lg" type="submit">
@@ -91,7 +91,7 @@ export default function LoginPage() {
           </Button>
         </form>
 
-        <p className="text-center text-xs text-muted-foreground">
+        <p className="text-center text-muted-foreground text-xs">
           By signing in you agree to our terms of use and privacy policy.
         </p>
       </div>

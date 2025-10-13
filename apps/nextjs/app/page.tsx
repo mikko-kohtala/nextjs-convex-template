@@ -23,19 +23,19 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-slate-50">
       <header className="border-b bg-white/80 backdrop-blur">
         <div className="mx-auto flex h-16 w-full max-w-5xl items-center justify-between px-6">
-          <Link href="/" className="flex items-center gap-3">
+          <Link className="flex items-center gap-3" href="/">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 font-semibold text-white">
               A
             </div>
             <div className="text-left">
               <p className="font-semibold">Acme Starter</p>
-              <p className="text-xs text-muted-foreground">Next.js · Convex · Better Auth</p>
+              <p className="text-muted-foreground text-xs">Next.js · Convex · Better Auth</p>
             </div>
           </Link>
 
           <div className="flex items-center gap-3">
             <AuthLoading>
-              <div className="text-sm text-muted-foreground">Checking status…</div>
+              <div className="text-muted-foreground text-sm">Checking status…</div>
             </AuthLoading>
 
             <Authenticated>
@@ -44,7 +44,7 @@ export default function Home() {
 
             <Unauthenticated>
               <div className="flex items-center gap-3">
-                <span className="text-sm text-muted-foreground">You&apos;re signed out</span>
+                <span className="text-muted-foreground text-sm">You&apos;re signed out</span>
                 <div className="flex items-center gap-2">
                   <Button asChild size="sm" variant="outline">
                     <Link href="/login">Sign in</Link>
@@ -64,14 +64,15 @@ export default function Home() {
           <section className="grid gap-10 lg:grid-cols-[1.35fr_minmax(0,1fr)] lg:items-start">
             <div className="space-y-8">
               <div className="space-y-4 text-balance">
-                <span className="inline-flex items-center gap-2 rounded-full border bg-white px-3 py-1 text-xs font-medium uppercase tracking-wide text-slate-600 shadow-sm">
+                <span className="inline-flex items-center gap-2 rounded-full border bg-white px-3 py-1 font-medium text-slate-600 text-xs uppercase tracking-wide shadow-sm">
                   Polished starter kit
                 </span>
-                <h1 className="font-semibold text-4xl tracking-tight text-slate-900 sm:text-5xl">
+                <h1 className="font-semibold text-4xl text-slate-900 tracking-tight sm:text-5xl">
                   Build your product faster with a clean, modern foundation.
                 </h1>
                 <p className="max-w-xl text-base text-muted-foreground sm:text-lg">
-                  Launch-ready auth, data, and UI primitives bundled into a single starter so you can focus on your core experience.
+                  Launch-ready auth, data, and UI primitives bundled into a single starter so you can focus on your core
+                  experience.
                 </p>
               </div>
 
@@ -95,7 +96,7 @@ export default function Home() {
                 </Unauthenticated>
               </div>
 
-              <dl className="grid w-full gap-6 text-sm text-muted-foreground sm:grid-cols-2">
+              <dl className="grid w-full gap-6 text-muted-foreground text-sm sm:grid-cols-2">
                 <FeatureStat label="Authentication" value="Better Auth 0.8" />
                 <FeatureStat label="Database" value="Convex real-time" />
                 <FeatureStat label="Frontend" value="Next.js 15 + React 19" />
@@ -108,14 +109,14 @@ export default function Home() {
                 <div className="space-y-4">
                   <div className="space-y-1">
                     <h2 className="font-semibold text-lg text-slate-900">Authentication status</h2>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-muted-foreground text-sm">
                       Keep track of the current session for this starter project.
                     </p>
                   </div>
 
                   <div className="rounded-xl border bg-slate-50 p-4">
                     <AuthLoading>
-                      <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-3 text-muted-foreground text-sm">
                         <span className="inline-flex h-2 w-2 animate-pulse rounded-full bg-slate-400" />
                         Checking authentication…
                       </div>
@@ -141,13 +142,15 @@ export default function Home() {
                     <h3 className="font-medium text-slate-900">What&apos;s inside</h3>
                     <ul className="space-y-2 text-muted-foreground">
                       <li className="flex items-center gap-2">
-                        <span className="h-1.5 w-1.5 rounded-full bg-slate-400" /> Convex queries and mutations ready to use
+                        <span className="h-1.5 w-1.5 rounded-full bg-slate-400" /> Convex queries and mutations ready to
+                        use
                       </li>
                       <li className="flex items-center gap-2">
                         <span className="h-1.5 w-1.5 rounded-full bg-slate-400" /> Prewired Better Auth configuration
                       </li>
                       <li className="flex items-center gap-2">
-                        <span className="h-1.5 w-1.5 rounded-full bg-slate-400" /> Shadcn components styled with Tailwind 4
+                        <span className="h-1.5 w-1.5 rounded-full bg-slate-400" /> Shadcn components styled with
+                        Tailwind 4
                       </li>
                     </ul>
                   </div>
@@ -159,7 +162,7 @@ export default function Home() {
       </main>
 
       <footer className="border-t bg-white/80">
-        <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 px-6 py-8 text-center text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:text-left">
+        <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 px-6 py-8 text-center text-muted-foreground text-sm sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <p>Built with Next.js 15, Convex, Better Auth 0.8, and Shadcn UI.</p>
           <p>Fully typed, production-ready foundations included.</p>
         </div>
@@ -176,10 +179,10 @@ function AuthenticatedHeader({ onLogout }: { onLogout: () => void }) {
       <div className="flex items-center gap-3 rounded-full bg-slate-100 px-3 py-1">
         <div className="text-right text-sm">
           <p className="font-medium text-slate-900">{user?.email || "Loading…"}</p>
-          <p className="text-xs text-muted-foreground">Signed in</p>
+          <p className="text-muted-foreground text-xs">Signed in</p>
         </div>
         {user?.email && (
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-sm font-medium text-white">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 font-medium text-sm text-white">
             {user.email.charAt(0).toUpperCase()}
           </div>
         )}
@@ -202,11 +205,9 @@ function AuthenticatedContent() {
       {user && (
         <div className="space-y-2 rounded-lg bg-white p-3 shadow-sm">
           <DetailRow label="Email" value={user.email} />
-          <DetailRow label="User ID" value={user._id} isCode />
+          <DetailRow isCode label="User ID" value={user._id} />
           {user.emailVerified && <DetailRow label="Email verified" value="Yes" />}
-          {user.createdAt && (
-            <DetailRow label="Member since" value={new Date(user.createdAt).toLocaleDateString()} />
-          )}
+          {user.createdAt && <DetailRow label="Member since" value={new Date(user.createdAt).toLocaleDateString()} />}
         </div>
       )}
     </div>
@@ -216,26 +217,18 @@ function AuthenticatedContent() {
 function FeatureStat({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-2xl border bg-white px-4 py-3 shadow-sm">
-      <p className="text-xs font-medium uppercase tracking-wide text-slate-500">{label}</p>
+      <p className="font-medium text-slate-500 text-xs uppercase tracking-wide">{label}</p>
       <p className="mt-1 font-medium text-slate-900">{value}</p>
     </div>
   );
 }
 
-function DetailRow({
-  label,
-  value,
-  isCode,
-}: {
-  label: string;
-  value: string;
-  isCode?: boolean;
-}) {
+function DetailRow({ label, value, isCode }: { label: string; value: string; isCode?: boolean }) {
   return (
     <div className="flex items-center justify-between gap-4">
-      <span className="text-xs font-medium uppercase tracking-wide text-slate-500">{label}</span>
+      <span className="font-medium text-slate-500 text-xs uppercase tracking-wide">{label}</span>
       {isCode ? (
-        <code className="rounded bg-slate-100 px-2 py-1 text-xs text-slate-700">{value}</code>
+        <code className="rounded bg-slate-100 px-2 py-1 text-slate-700 text-xs">{value}</code>
       ) : (
         <span className="text-slate-900">{value}</span>
       )}
