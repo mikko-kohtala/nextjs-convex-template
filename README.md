@@ -97,3 +97,8 @@ pnpm convex:deploy
 ### Next.js
 
 Deploy to Vercel or any Next.js hosting platform. Ensure environment variables are set.
+
+## NOTES
+
+explain
+npx @better-auth/cli generate --output convex/betterAuth/generatedSchema.ts -y --config convex/betterAuth/auth.ts

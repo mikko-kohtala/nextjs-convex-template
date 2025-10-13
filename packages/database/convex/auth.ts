@@ -36,6 +36,16 @@ export const createAuth = (
       requireEmailVerification: false,
     },
     plugins: [convex()],
+    user: {
+      additionalFields: {
+        role: {
+          type: "string",
+          required: false,
+          defaultValue: "user",
+          input: false, // don't allow user to set role
+        },
+      },
+    },
   } satisfies BetterAuthOptions);
 
 // Export a static instance for Better Auth schema generation
