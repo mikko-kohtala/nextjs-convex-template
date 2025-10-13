@@ -43,3 +43,4 @@ yarn-error.log*
 
 # convex
 **/convex/_generated
+**/convex/betterAuth/_generated
