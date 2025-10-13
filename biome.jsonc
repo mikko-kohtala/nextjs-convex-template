@@ -17,6 +17,9 @@
       "suspicious": {
         "noConsole": "off",
         "noUnknownAtRules": "off"
+      },
+      "style": {
+        "useFilenamingConvention": "off"
       }
     }
   }
