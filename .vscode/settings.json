@@ -1,5 +1,5 @@
 {
-  "window.title": "acme-monorepo • ${activeEditorShort}${dirty}",
+  "window.title": "acme-monorepo${separator}${activeEditorShort} ${dirty}",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "biomejs.biome"
