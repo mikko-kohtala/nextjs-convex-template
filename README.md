@@ -102,3 +102,7 @@ Deploy to Vercel or any Next.js hosting platform. Ensure environment variables a
 
 explain
 npx @better-auth/cli generate --output convex/betterAuth/generatedSchema.ts -y --config convex/betterAuth/auth.ts
+
+vercel deploy with dev
+pnpm --filter=@port-monitor-web/database convex:deploy && pnpm turbo build --filter=@port-monitor-web/nextjs
+(convex dev --once)
